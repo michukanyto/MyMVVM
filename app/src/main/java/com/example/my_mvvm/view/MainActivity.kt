@@ -3,6 +3,7 @@ package com.example.my_mvvm.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.my_mvvm.R
@@ -28,10 +29,17 @@ class MainActivity : AppCompatActivity() {
             name = nameEditText.text.toString()
             age = Integer.parseInt(ageEditText.text.toString())
             viewModel.loadUser(id!!, name!!,age!!)
-            viewModel.getUser(id!!).observe(this, Observer { user ->
-                Log.i("MainActivity---------> ", "${user.name}")
-                resultTextView.text = "Welcome 55${user.name}"
+            
+            viewModel.getUser(id!!).observe(this, Observer { state ->
+                Log.i("MainActivity---------> ", "${state.user?.name}")
+
+                if (state.errorMessage == "warning") {
+                    resultTextView.text = "${state.errorMessage}"
+                } else {
+                    resultTextView.text = "Welcome ${state.user?.name}"
+                }
             })
+
 
         }
 

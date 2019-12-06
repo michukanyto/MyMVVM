@@ -24,6 +24,6 @@ class ExampleUnitTest {
         val userId = 3
         val user = viewModel.loadUser(3,"Louisse",25)
         val liveData = viewModel.getUser(userId)
-        assertEquals(userId, liveData.value!!.id)
+        assertEquals(userId, liveData.value!!.user?.id)
     }
 }
