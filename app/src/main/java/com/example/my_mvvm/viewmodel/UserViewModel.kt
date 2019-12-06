@@ -11,13 +11,13 @@ class UserViewModel: ViewModel() {
     private val user = MutableLiveData<User>()//liveData
 
     fun getUser(id: Int): LiveData<User> {
-        loadUser(id)
+//        loadUser(id)
         Log.i("ViewModel ======> ","User loaded")
         return user
     }
 
-    private fun loadUser(id: Int) {
-        user.value = User(id,"${id} - User ", id + 18)
+   fun loadUser(id: Int, name:String, age:Int) {
+        user.value = User(id,name, age)
     }
 
 }
