@@ -37,4 +37,5 @@ dependencies {
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    testImplementation "android.arch.core:core-testing:$lifecycle_version"
 }

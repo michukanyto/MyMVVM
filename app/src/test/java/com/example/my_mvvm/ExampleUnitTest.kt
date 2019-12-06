@@ -1,8 +1,11 @@
 package com.example.my_mvvm
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.my_mvvm.viewmodel.UserViewModel
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Rule
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -10,8 +13,17 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
+    @Rule
+    @JvmField
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun shouldLoadUserEqual_3() {
+        val viewModel = UserViewModel()
+        val userId = 3
+        val user = viewModel.loadUser(3,"Louisse",25)
+        val liveData = viewModel.getUser(userId)
+        assertEquals(userId, liveData.value!!.id)
     }
 }
