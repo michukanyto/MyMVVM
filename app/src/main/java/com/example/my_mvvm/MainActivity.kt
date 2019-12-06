@@ -8,13 +8,15 @@ import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: UserViewModel
+//    private lateinit var viewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i("MainActivity  ", "onCreate()")
-        viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+//        viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+
+        supportFragmentManager.beginTransaction().add(android.R.id.content, MainFragment()).commit()//content is default container
 
     }
 
