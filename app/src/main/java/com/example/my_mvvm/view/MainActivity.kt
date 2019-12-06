@@ -28,17 +28,12 @@ class MainActivity : AppCompatActivity() {
             name = nameEditText.text.toString()
             age = Integer.parseInt(ageEditText.text.toString())
             viewModel.loadUser(id!!, name!!,age!!)
-            viewModel.getUser(100).observe(this, Observer { user ->
+            viewModel.getUser(id!!).observe(this, Observer { user ->
                 Log.i("MainActivity---------> ", "${user.name}")
-                resultTextView.text = "${user.name}"
+                resultTextView.text = "Welcome 55${user.name}"
             })
 
         }
 
-
-        viewModel.getUser(id!!).observe(this, Observer { user->
-            Log.i("MainActivity---------> ", "${user.name}")
-            resultTextView.text = "${user.name}"
-        })
     }
 }

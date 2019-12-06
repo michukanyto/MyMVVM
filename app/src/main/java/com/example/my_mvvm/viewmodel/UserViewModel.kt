@@ -11,7 +11,6 @@ class UserViewModel: ViewModel() {
     private val user = MutableLiveData<User>()//liveData
 
     fun getUser(id: Int): LiveData<User> {
-//        loadUser(id)
         Log.i("ViewModel ======> ","User loaded")
         return user
     }
